@@ -14,6 +14,7 @@
 		3CC70D5F2AA95A25003987DE /* FullStory_POC_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC70D5E2AA95A25003987DE /* FullStory_POC_SwiftTests.swift */; };
 		3CC70D692AA95A25003987DE /* FullStory_POC_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC70D682AA95A25003987DE /* FullStory_POC_SwiftUITests.swift */; };
 		3CC70D6B2AA95A25003987DE /* FullStory_POC_SwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC70D6A2AA95A25003987DE /* FullStory_POC_SwiftUITestsLaunchTests.swift */; };
+		3CC70D792AA95C50003987DE /* FullStory in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC70D782AA95C50003987DE /* FullStory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3CC70D642AA95A25003987DE /* FullStory POC SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FullStory POC SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC70D682AA95A25003987DE /* FullStory_POC_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStory_POC_SwiftUITests.swift; sourceTree = "<group>"; };
 		3CC70D6A2AA95A25003987DE /* FullStory_POC_SwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStory_POC_SwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3CC70D7B2AA95E2F003987DE /* FullStory-POC-Swift-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FullStory-POC-Swift-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC70D792AA95C50003987DE /* FullStory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +97,7 @@
 		3CC70D4C2AA95A22003987DE /* FullStory POC Swift */ = {
 			isa = PBXGroup;
 			children = (
+				3CC70D7B2AA95E2F003987DE /* FullStory-POC-Swift-Info.plist */,
 				3CC70D4D2AA95A22003987DE /* FullStory_POC_SwiftApp.swift */,
 				3CC70D4F2AA95A22003987DE /* ContentView.swift */,
 				3CC70D512AA95A24003987DE /* Assets.xcassets */,
@@ -137,12 +141,16 @@
 				3CC70D462AA95A22003987DE /* Sources */,
 				3CC70D472AA95A22003987DE /* Frameworks */,
 				3CC70D482AA95A22003987DE /* Resources */,
+				3CC70D7A2AA95C87003987DE /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "FullStory POC Swift";
+			packageProductDependencies = (
+				3CC70D782AA95C50003987DE /* FullStory */,
+			);
 			productName = "FullStory POC Swift";
 			productReference = 3CC70D4A2AA95A22003987DE /* FullStory POC Swift.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +223,9 @@
 				Base,
 			);
 			mainGroup = 3CC70D412AA95A22003987DE;
+			packageReferences = (
+				3CC70D772AA95C50003987DE /* XCRemoteSwiftPackageReference "fullstory-swift-package-ios" */,
+			);
 			productRefGroup = 3CC70D4B2AA95A22003987DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -251,6 +262,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CC70D7A2AA95C87003987DE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ -d \"${BUILD_DIR%Build/*}/SourcePackages/artifacts/FullStory/\" ]\nthen\n  # XCode 13.2 and older\n  \"${BUILD_DIR%Build/*}/SourcePackages/artifacts/FullStory/tools/FullStoryCommandLine\" \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\"\nelif [ -d \"${BUILD_DIR%Build/*}/SourcePackages/artifacts/fullstory-swift-package-ios/fullstory/tools/\" ]\nthen\n  # XCode 14.3+\n  \"${BUILD_DIR%Build/*}/SourcePackages/artifacts/fullstory-swift-package-ios/fullstory/tools/FullStoryCommandLine\" \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\"\nelif [ -d \"${BUILD_DIR%Build/*}/SourcePackages/artifacts/fullstory-swift-package-ios/\" ]\nthen\n  # XCode 13.3 - 14.2\n  \"${BUILD_DIR%Build/*}/SourcePackages/artifacts/fullstory-swift-package-ios/tools/FullStoryCommandLine\" \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\"\nelse \n  echo \"Error: Unable to find FullStoryCommandLine. Please contact support@fullstory.com for assistance.\"\n  exit 127\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3CC70D462AA95A22003987DE /* Sources */ = {
@@ -419,6 +450,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FullStory POC Swift/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,6 +479,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FullStory POC Swift/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,7 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.devhaus.FullStoryPOCSwift.FullStory-POC-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -492,7 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.devhaus.FullStoryPOCSwift.FullStory-POC-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3CC70D772AA95C50003987DE /* XCRemoteSwiftPackageReference "fullstory-swift-package-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fullstorydev/fullstory-swift-package-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3CC70D782AA95C50003987DE /* FullStory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CC70D772AA95C50003987DE /* XCRemoteSwiftPackageReference "fullstory-swift-package-ios" */;
+			productName = FullStory;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3CC70D422AA95A22003987DE /* Project object */;
 }

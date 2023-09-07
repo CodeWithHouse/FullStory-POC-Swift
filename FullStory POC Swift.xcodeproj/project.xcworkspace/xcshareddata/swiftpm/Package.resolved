@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "fullstory-swift-package-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fullstorydev/fullstory-swift-package-ios",
+      "state" : {
+        "revision" : "756882f9c1a86a81d10e9bff79f955c1920e5765",
+        "version" : "1.41.0"
+      }
+    }
+  ],
+  "version" : 2
+}
